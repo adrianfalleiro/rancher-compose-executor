@@ -30,10 +30,10 @@ func (p *RancherProjectFactory) Create(c *cli.Context) (*project.Project, error)
 		AccessKey:  c.GlobalString("access-key"),
 		SecretKey:  c.GlobalString("secret-key"),
 		PullCached: c.Bool("cached"),
-		Uploader:   &rancher.S3Uploader{
+		Uploader: &rancher.S3Uploader{
 			Bucket: c.String("bucket"),
-			},
-		Args:       c.Args(),
+		},
+		Args: c.Args(),
 	}
 
 	Populate(&context.Context, c)
@@ -152,9 +152,9 @@ func UpCommand(factory ProjectFactory) cli.Command {
 				Value: 1000,
 			},
 			cli.StringFlag{
-							Name:  "bucket",
-							Usage: "Specify S3 bucket to upload builds to",
-						},
+				Name:  "bucket",
+				Usage: "Specify S3 bucket to upload builds to",
+			},
 		},
 	}
 }
